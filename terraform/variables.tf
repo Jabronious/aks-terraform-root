@@ -4,7 +4,7 @@ variable "prefix" {
 
 variable "location" {
   description = "Location the cluster will be located in"
-  default = "eastus"
+  default     = "eastus"
 }
 
 variable "tags" {
