@@ -23,8 +23,6 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform -chdir=./terraform init
-          with:
-            args: '-backend-config="access_key=${{ secrets.ACCESS_TOKEN }}"'
       
       - name: Terraform Validate
         id: validate
