@@ -1,9 +1,13 @@
 provider "azurerm" {
-  tenant_id       = var.tenant_id
-  subscription_id = var.subscription_id
-  client_id       = var.client_id
-  client_secret   = var.client_secret
   features {}
+}
+
+terraform {
+  backend "azurerm" {
+    storage_account_name = "tfstate25201"
+    container_name       = "tfstate"
+    key                  = "aks-cluster.tfstate"
+  }
 }
 
 resource "azurerm_resource_group" "default" {
@@ -26,9 +30,8 @@ resource "azurerm_kubernetes_cluster" "default" {
     os_disk_size_gb = 30
   }
 
-  service_principal {
-    client_id     = var.client_id
-    client_secret = var.client_secret
+  identity {
+    type = "SystemAssigned"
   }
 
   role_based_access_control {
