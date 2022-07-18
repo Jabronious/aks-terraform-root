@@ -6,7 +6,7 @@ terraform {
   backend "azurerm" {
     storage_account_name = "tfstate25201"
     container_name       = "tfstate"
-    key = "aks-cluster.tfstate"
+    key                  = "aks-cluster.tfstate"
   }
 }
 
