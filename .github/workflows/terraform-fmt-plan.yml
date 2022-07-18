@@ -6,12 +6,6 @@ on:
 jobs:
   terraform:
     name: 'Terraform'
-    env:
-      ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
-      ARM_ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,6 +20,12 @@ jobs:
 
       - name: Terraform Init
         id: init
+        env:
+          ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
+          ARM_ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
         run: terraform -chdir=./terraform init
       
       - name: Terraform Validate
@@ -34,6 +34,12 @@ jobs:
 
       - name: Terraform Plan
         id: plan
+        env:
+          ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
+          ARM_ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
         if: github.event_name == 'pull_request'
         run: terraform -chdir=./terraform plan -no-color -input=false -var prefix=${{ github.repository }}
         continue-on-error: true
