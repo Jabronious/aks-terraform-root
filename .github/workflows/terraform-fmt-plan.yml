@@ -6,6 +6,12 @@ on:
 jobs:
   terraform:
     name: 'Terraform'
+    env:
+      ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      ARM_CLIENT_SECRET: : ${{ secrets.CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
+      ARM_ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,8 +19,6 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.1.7
 
       - name: Terraform Format
         id: fmt
@@ -31,11 +35,6 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        env:
-          TF_VAR_subscription_id: ${{ secrets.SUBSCRIPTION_ID }}
-          TF_VAR_client_id: ${{ secrets.CLIENT_ID }}
-          TF_VAR_client_secret: ${{ secrets.CLIENT_SECRET }}
-          TF_VAR_tenant_id: ${{ secrets.TENANT_ID }}
         run: terraform -chdir=./terraform plan -no-color -input=false
         continue-on-error: true
 

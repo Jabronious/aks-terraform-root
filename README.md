@@ -12,3 +12,13 @@ This is a root repo to create a quick AKS cluster
     - `az aks get-credentials --resource-group [resource-group-name] --name [aks-cluster-name] --admin`
 
 I need to find out how to include all of this in github actions
+
+All env vars must be defined locally and in actions env:
+
+```bash
+ARM_CLIENT_ID
+ARM_CLIENT_SECRET
+ARM_SUBSCRIPTION_ID
+ARM_TENANT_ID
+ARM_ACCESS_KEY
+```
