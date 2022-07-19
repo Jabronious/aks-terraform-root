@@ -1,5 +1,7 @@
 # aks-terraform-root
 
+[![Terraform Fmt and Plan](https://github.com/Jabronious/aks-terraform-root/actions/workflows/terraform-fmt-plan.yml/badge.svg)](https://github.com/Jabronious/aks-terraform-root/actions/workflows/terraform-fmt-plan.yml)
+
 ## Purpose
 
 The goal of this repo is to provide anyone the ability to quickly spin up their own bare bones Azure Kubernetes Service (AKS). Not only does this provide the ground work to manual deploy using terraform from the command line but can also be apart of a CI/CD flow using Github Actions.
