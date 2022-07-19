@@ -35,3 +35,9 @@ The goal of this repo is to provide anyone the ability to quickly spin up their 
 ## Github Actions
 
 For the Actions to function properly you will need to set all of the values `ARM_` values as secrets on the repo as well.
+
+## Other Improvements
+
+- Add `terraform apply` to Actions
+- Dig deeper into other options that are available to the AKS
+  - Load Balancer configs?
