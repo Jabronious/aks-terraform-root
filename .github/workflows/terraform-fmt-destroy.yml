@@ -1,7 +1,8 @@
 name: Destroy AKS every hour
+
 on:
   schedule:
-    - cron: "10 */1 * * *"
+    - cron: "59 */1 * * *"
 
 jobs:
   terraform:
@@ -31,5 +32,5 @@ jobs:
 
       - name: Terraform Destroy
         id: destroy
-        run: terraform -chdir=./terraform destroy -no-color -input=false -var prefix=${{ github.event.repository.name }}
+        run: terraform -chdir=./terraform destroy -no-color -input=false -var prefix=$( echo ${{ github.repository }} | sed 's/${{ github.repository_owner }}\///g')
         continue-on-error: true
