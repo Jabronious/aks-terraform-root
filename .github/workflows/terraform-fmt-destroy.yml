@@ -1,4 +1,4 @@
-name: Do things every 5 minutes
+name: Destroy AKS every hour
 on:
   schedule:
     - cron: "0 */1 * * *"
