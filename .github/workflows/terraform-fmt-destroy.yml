@@ -32,5 +32,5 @@ jobs:
 
       - name: Terraform Destroy
         id: destroy
-        run: terraform -chdir=./terraform destroy -no-color -input=false -var prefix=$( echo ${{ github.repository }} | sed 's/${{ github.repository_owner }}\///g')
+        run: terraform -chdir=./terraform apply -destroy -auto-approve -no-color -input=false -var prefix=$( echo ${{ github.repository }} | sed 's/${{ github.repository_owner }}\///g')
         continue-on-error: true
