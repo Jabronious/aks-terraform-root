@@ -40,6 +40,5 @@ For the Actions to function properly you will need to set all of the values `ARM
 
 ## Other Improvements
 
-- Add `terraform apply` to Actions
 - Dig deeper into other options that are available to the AKS
   - Load Balancer configs?
