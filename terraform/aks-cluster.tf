@@ -4,9 +4,9 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    storage_account_name = "tfstate25201"
+    storage_account_name = "tfstate29791"
     container_name       = "tfstate"
-    key                  = "aks-cluster.tfstate"
+    key                  = "efit-aks-cluster.tfstate"
   }
 }
 
